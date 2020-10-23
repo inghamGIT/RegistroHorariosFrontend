@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-4 mx-auto" *ngFor="let registro of registros">
+      <div class="card">
+          <div class="card-header text-center"><h3>{{registro.fecha}}</h3></div>
+          <div class="card-body">
+              <form>
+                  <div class="form-group">
+                      <input type="text" name="entrada" class="form-control" placeholder="Hora de entrada: {{registro.horaEntrada}}" readonly>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" name="salida" class="form-control" placeholder="Hora de salida: {{registro.horaSalida}}" readonly>
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" id="validationTextarea" placeholder="{{registro.descripcion}}" readonly></textarea>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

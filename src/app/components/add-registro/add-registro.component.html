@@ -1,0 +1,43 @@
+<div class="alert alert-success row" role="alert" *ngIf="successMsg; else editar">
+    <div class="col-md-4">{{successMsg}}</div>
+    <div class="col-md-4"><button class="btn btn-primary btn-md" (click)="volver()">Volver</button></div>
+</div>
+
+<ng-template #editar>
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-header text-center">Añadir registro</div>
+                <div class="card-body">
+    
+                    <form #userForm="ngForm" (submit)="add()">
+                    
+                        <div class="form-group">
+                            <label>Hora de entrada:</label>
+                            <input type="text" name="entrada" class="form-control" placeholder="{{registro.horaEntrada}}"
+                            #entrada="ngModel" [(ngModel)]="registro.horaEntrada" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$">
+
+                            <small class="text-danger" *ngIf="entrada.errors && (entrada.invalid || entrada.touched)">Introduzca la fecha en formato HH:MM (24h)</small>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>Hora de salida:</label>
+                            <input type="text" name="salida" class="form-control" placeholder="{{registro.horaSalida}}"
+                            #salida="ngModel" [(ngModel)]="registro.horaSalida" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$">
+
+                            <small class="text-danger" *ngIf="salida.errors && (salida.invalid || salida.touched)">Introduzca la fecha en formato HH:MM (24h)</small>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>Descripcion:</label>
+                            <textarea name="descripcion" class="form-control" placeholder="{{registro.descripcion}}"
+                            #descripcion="ngModel" [(ngModel)]="registro.descripcion"></textarea>
+                        </div>
+                    
+                        <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary btn-block">Fichar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>    
+</ng-template>

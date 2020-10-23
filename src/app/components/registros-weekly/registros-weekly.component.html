@@ -1,0 +1,138 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="lunes-tab" data-toggle="tab" href="#lunes" role="tab" aria-controls="home"
+        aria-selected="true">Lunes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="martes-tab" data-toggle="tab" href="#martes" role="tab" aria-controls="profile"
+        aria-selected="false">Martes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="miercoles-tab" data-toggle="tab" href="#miercoles" role="tab" aria-controls="contact"
+        aria-selected="false">Miércoles</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="jueves-tab" data-toggle="tab" href="#jueves" role="tab" aria-controls="contact"
+        aria-selected="false">Jueves</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="viernes-tab" data-toggle="tab" href="#viernes" role="tab" aria-controls="contact"
+        aria-selected="false">Viernes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="sabado-tab" data-toggle="tab" href="#sabado" role="tab" aria-controls="contact"
+        aria-selected="false">Sábado</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="domingo-tab" data-toggle="tab" href="#domingo" role="tab" aria-controls="contact"
+        aria-selected="false">Domingo</a>
+    </li>
+</ul>
+  
+  <div class="tab-content" id="myTabContent">
+    
+    <div class="tab-pane fade show active" id="lunes" role="tabpanel" aria-labelledby="lunes-tab">
+      <br/>
+      <form>
+        <div class="form-group">
+            <input type="text" name="entrada" class="form-control" placeholder="Hora de entrada: {{registro[0].horaEntrada}}" readonly>
+        </div>
+        <div class="form-group">
+            <input type="text" name="salida" class="form-control" placeholder="Hora de salida: {{registro[0].horaSalida}}" readonly>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" id="validationTextarea" placeholder="{{registro[0].descripcion}}" readonly></textarea>
+        </div>
+      </form>
+    </div>
+    
+    <div class="tab-pane fade" id="martes" role="tabpanel" aria-labelledby="martes-tab">
+      <br/>
+      <form>
+        <div class="form-group">
+            <input type="text" name="entrada" class="form-control" placeholder="Hora de entrada: {{registro[1].horaEntrada}}" readonly>
+        </div>
+        <div class="form-group">
+            <input type="text" name="salida" class="form-control" placeholder="Hora de salida: {{registro[1].horaSalida}}" readonly>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" id="validationTextarea" placeholder="{{registro[1].descripcion}}" readonly></textarea>
+        </div>
+      </form>
+    </div>
+    
+    <div class="tab-pane fade" id="miercoles" role="tabpanel" aria-labelledby="miercoles-tab">
+      <br/>
+      <form>
+        <div class="form-group">
+            <input type="text" name="entrada" class="form-control" placeholder="Hora de entrada: {{registro[2].horaEntrada}}" readonly>
+        </div>
+        <div class="form-group">
+            <input type="text" name="salida" class="form-control" placeholder="Hora de salida: {{registro[2].horaSalida}}" readonly>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" id="validationTextarea" placeholder="{{registro[2].descripcion}}" readonly></textarea>
+        </div>
+      </form>
+    </div>
+    
+    <div class="tab-pane fade" id="jueves" role="tabpanel" aria-labelledby="jueves-tab">
+      <br/>
+      <form>
+        <div class="form-group">
+            <input type="text" name="entrada" class="form-control" placeholder="Hora de entrada: {{registro[3].horaEntrada}}" readonly>
+        </div>
+        <div class="form-group">
+            <input type="text" name="salida" class="form-control" placeholder="Hora de salida: {{registro[3].horaSalida}}" readonly>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" id="validationTextarea" placeholder="{{registro[3].descripcion}}" readonly></textarea>
+        </div>
+      </form>
+    </div>
+    
+    <div class="tab-pane fade" id="viernes" role="tabpanel" aria-labelledby="viernes-tab">
+      <br/>
+      <form>
+        <div class="form-group">
+            <input type="text" name="entrada" class="form-control" placeholder="Hora de entrada: {{registro[4].horaEntrada}}" readonly>
+        </div>
+        <div class="form-group">
+            <input type="text" name="salida" class="form-control" placeholder="Hora de salida: {{registro[4].horaSalida}}" readonly>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" id="validationTextarea" placeholder="{{registro[4].descripcion}}" readonly></textarea>
+        </div>
+      </form>
+    </div>
+    
+    <div class="tab-pane fade" id="sabado" role="tabpanel" aria-labelledby="sabado-tab">
+      <br/>
+      <form>
+        <div class="form-group">
+            <input type="text" name="entrada" class="form-control" placeholder="Hora de entrada: {{registro[5].horaEntrada}}" readonly>
+        </div>
+        <div class="form-group">
+            <input type="text" name="salida" class="form-control" placeholder="Hora de salida: {{registro[5].horaSalida}}" readonly>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" id="validationTextarea" placeholder="{{registro[5].descripcion}}" readonly></textarea>
+        </div>
+      </form>
+    </div>
+    
+    <div class="tab-pane fade" id="domingo" role="tabpanel" aria-labelledby="domingo-tab">
+      <br/>
+      <form>
+        <div class="form-group">
+            <input type="text" name="entrada" class="form-control" placeholder="Hora de entrada: {{registro[6].horaEntrada}}" readonly>
+        </div>
+        <div class="form-group">
+            <input type="text" name="salida" class="form-control" placeholder="Hora de salida: {{registro[6].horaSalida}}" readonly>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" id="validationTextarea" placeholder="{{registro[6].descripcion}}" readonly></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
