@@ -17,7 +17,7 @@ export class AddRegistroComponent implements OnInit {
     fecha: undefined,
     user: '',
     descripcion: ''
-  }
+  };
   errorMsg = '';
   successMsg = '';
   userId: string;
@@ -37,18 +37,18 @@ export class AddRegistroComponent implements OnInit {
           if (res.datos[0]) {
             this.update = true;
             this.registro = res.datos[0];
-          } 
+          }
         },
         err => {
           this.errorMsg = err.error;
         }
-      )
+      );
   }
 
-  add() {
+  add(): void {
     if (this.update) {
       this.registroService.updateRegistro(
-      { 
+      {
         horaEntrada: this.registro.horaEntrada,
         horaSalida: this.registro.horaSalida,
         fecha: new Date(),
@@ -67,7 +67,7 @@ export class AddRegistroComponent implements OnInit {
     }
     else {
       this.registroService.addRegistro(
-      { 
+      {
         horaEntrada: this.registro.horaEntrada,
         horaSalida: this.registro.horaSalida,
         fecha: new Date(),
@@ -85,7 +85,7 @@ export class AddRegistroComponent implements OnInit {
     }
   }
 
-  volver() {
-    this.router.navigate(['/registro', this.userId]);  
+  volver(): void {
+    this.router.navigate(['/registro', this.userId]);
   }
 }

@@ -12,7 +12,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { EditarEmpleadoComponent } from './components/editar-empleado/editar-empleado.component';
 import { EditarPassComponent } from './components/editar-pass/editar-pass.component';
-import { AddRegistroComponent } from './components/add-registro/add-registro.component'
+import { AddRegistroComponent } from './components/add-registro/add-registro.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [

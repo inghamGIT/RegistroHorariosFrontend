@@ -9,35 +9,35 @@
             <div class="card">
                 <div class="card-header text-center">Editar contraseña</div>
                 <div class="card-body">
-    
+
                     <form #userForm="ngForm" (submit)="edit()">
 
                         <div class="form-group">
                             <input type="password" name="oldpass" class="form-control" placeholder="Contraseña actual" required
-                            #oldpass="ngModel" [class.is-invalid]="oldpass.invalid && oldpass.touched" [(ngModel)]="empleado.pass"
+                            #oldpass="ngModel" [class.is-invalid]="oldpass.invalid && oldpass.touched" [(ngModel)]="empleado.oldpass"
                             [class.is-valid]="oldpass.valid && oldpass.touched">
 
                             <small class="text-danger" [class.d-none]="oldpass.valid || oldpass.untouched">Este campo es obligatorio</small>
+                            <small class="text-danger" [class.d-none]="(errorMsg !== noCoinciden) || !errorMsg">La contraseña es errónea</small>
                         </div>
-                    
+
                         <div class="form-group">
                             <input type="password" name="pass" class="form-control" placeholder="Nueva contraseña" required
-                            #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched" pattern="^[a-zA-Z0-9]{5}$"
-                            [(ngModel)]="empleado.newPass" [class.is-valid]="pass.valid && pass.touched">
-                            
+                            #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched"
+                            [(ngModel)]="empleado.pass" [class.is-valid]="pass.valid && pass.touched">
+
                             <small class="text-danger" [class.d-none]="pass.valid || pass.untouched">Este campo es obligatorio</small>
-                            <small class="text-danger" *ngIf="pass.errors.pattern">La contraseña debe tener entre 3 y 30 digitos alfanuméricos</small>
-                            {{ pass.errors.pattern | json }}
+                            <small class="text-danger" [class.d-none]="(errorMsg !== errConfirm) || !errorMsg">Las contraseñas no coinciden</small>
                         </div>
-    
+
                         <div class="form-group">
                             <input type="password" name="confirm" class="form-control" placeholder="Confirmar Contraseña" required
-                            #confirm="ngModel" [class.is-invalid]="confirm.invalid && confirm.touched" pattern="^[a-zA-Z0-9]{5}$"
+                            #confirm="ngModel" [class.is-invalid]="confirm.invalid && confirm.touched"
                             [(ngModel)]="empleado.confirm" [class.is-valid]="confirm.valid && confirm.touched" ngValidateEqual="pass">
-                           
+
                             <small class="text-danger" *ngIf="confirm.hasError('notEqual') && pass.valid">La contraseña no coincide</small>
                         </div>
-                    
+
                         <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary btn-block">Actualizar</button>
                     </form>
                 </div>

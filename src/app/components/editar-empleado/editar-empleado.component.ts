@@ -14,7 +14,7 @@ export class EditarEmpleadoComponent implements OnInit {
     apeEmp: '',
     username: '',
     email: ''
-  }
+  };
   errorMsg = '';
   successMsg = '';
   userId: string;
@@ -26,11 +26,11 @@ export class EditarEmpleadoComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.authService.userId.subscribe(userId => this.userId = userId)
+    this.authService.userId.subscribe(userId => this.userId = userId);
   }
 
-  edit() {
-    this.authService.update(this.empleado, this.activatedRoute.snapshot.params.id)
+  edit(): void {
+    this.authService.update(this.empleado, this.userId)
       .subscribe(
         res => {
           this.successMsg = res.accion;
@@ -38,12 +38,11 @@ export class EditarEmpleadoComponent implements OnInit {
         err => {
           this.errorMsg = err.error;
         }
-      )
+      );
   }
 
-  volver() {
+  volver(): void {
       this.router.navigate(['/profile', this.userId]);
-  
   }
 }
 

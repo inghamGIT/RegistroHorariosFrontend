@@ -1,3 +1,14 @@
+<div class="alert alert-danger row" role="alert" *ngIf="errorMsg !== yaExiste && errorMsg">
+  <div class="col-md-4 mx-auto">
+    <p>Error en la validación de los datos en el servidor:</p>
+    <p>El nombre debe ser alfanumérico y poseer entre 3 y 30 caracteres.</p>
+    <p>Los apellidos deben ser alfanuméricos y poseer entre 3 y 60 caracteres.</p>
+    <p>El nombre de usuario debe ser alfanumérico y poseer entre 3 y 30 caracteres.</p>
+    <p>La contraseña debe tener entre 4 y 30 caracteres.</p>
+    <p>El correo electrónico debe ser una dirección válida.</p>
+  </div>
+</div>
+
 <div class="row">
     <div class="col-md-4 mx-auto">
         <div class="card">
@@ -5,21 +16,21 @@
             <div class="card-body">
 
                 <form #userForm="ngForm" (submit)="signup()">
-                
+
                     <div class="form-group">
                         <input type="text" name="nomEmp" class="form-control" placeholder="Nombre" required
                         #nombre="ngModel" [class.is-invalid]="nombre.invalid && nombre.touched" [(ngModel)]="empleado.nomEmp"
                         [class.is-valid]="nombre.valid && nombre.touched">
                         <small class="text-danger" [class.d-none]="nombre.valid || nombre.untouched">Este campo es obligatorio</small>
                     </div>
-                
+
                     <div class="form-group">
                         <input type="text" name="apeEmp" class="form-control" placeholder="Apellidos" required
                         #apellidos="ngModel" [class.is-invalid]="apellidos.invalid && apellidos.touched" [(ngModel)]="empleado.apeEmp"
                         [class.is-valid]="nombre.valid && nombre.touched">
                         <small class="text-danger" [class.d-none]="apellidos.valid || apellidos.untouched">Este campo es obligatorio</small>
                     </div>
-                
+
                     <div class="form-group">
                         <input type="text" name="username" class="form-control" placeholder="Nombre de usuario" required
                         #username="ngModel" [class.is-invalid]="username.invalid && username.touched" [(ngModel)]="empleado.username"
@@ -27,7 +38,7 @@
                         <small class="text-danger" [class.d-none]="username.valid || username.untouched">Este campo es obligatorio</small>
                         <small class="text-danger" [class.d-none]="(errorMsg !== yaExiste) || !errorMsg">Ya existe un usuario con ese identificador</small>
                     </div>
-                
+
                     <div class="form-group">
                         <input type="password" name="pass" class="form-control" placeholder="Contraseña" required
                         #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched" [(ngModel)]="empleado.pass"
@@ -40,14 +51,14 @@
                         [class.is-valid]="confirm.valid && confirm.touched" ngValidateEqual="pass">
                         <small class="text-danger" *ngIf="confirm.hasError('notEqual') && pass.valid">La contraseña no coincide</small>
                     </div>
-                
+
                     <div class="form-group">
                         <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required
                         #email="ngModel" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="empleado.email"
                         [class.is-valid]="email.valid && email.touched">
                         <small class="text-danger" [class.d-none]="email.valid || email.untouched">Este campo es obligatorio</small>
                     </div>
-                
+
                     <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary btn-block">Signup</button>
                 </form>
             </div>

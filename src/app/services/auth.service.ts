@@ -20,40 +20,40 @@ export class AuthService {
     private router: Router
   ) { }
 
-  setCurrentUser(user: string) {
+  setCurrentUser(user: string): void {
     this.userSource.next(user);
   }
-  
-  setIdUser(id: string) {
+
+  setIdUser(id: string): void {
     this.userIdSource.next(id);
   }
 
-  signup(empleado) {
+  signup(empleado): any {
     return this.httpClient.post<any>(this.url + '/auth/signup', empleado);
   }
 
-  login(empleado) {
+  login(empleado): any {
     return this.httpClient.post<any>(this.url + '/auth/login', empleado)
       .pipe(catchError(this.errorHandler));
   }
 
-  update(empleado, id) {
+  update(empleado, id: string): any {
     return this.httpClient.put<any>(this.url + '/empleados/empleado/' + id, empleado);
   }
 
-  updatePass(empleado, id) {
+  updatePass(empleado, id: string): any {
     return this.httpClient.put<any>(this.url + '/empleados/pass/' + id, empleado);
   }
 
-  getUser(username: string) {
-    return this.httpClient.get<any>(this.url + '/empleados/username/' + username)
+  getUser(username: string): any {
+    return this.httpClient.get<any>(this.url + '/empleados/username/' + username);
   }
 
-  getUserById(id: string) {
-    return this.httpClient.get<any>(this.url + '/empleados/' + id)
+  getUserById(id: string): any {
+    return this.httpClient.get<any>(this.url + '/empleados/' + id);
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
     this.setCurrentUser('');
     this.setIdUser('');
@@ -61,15 +61,15 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  isLogged() {
+  isLogged(): boolean {
     return !!localStorage.getItem('token');
   }
 
-  getToken() {
+  getToken(): string {
     return localStorage.getItem('token');
   }
 
-  errorHandler(error: HttpErrorResponse) {
+  errorHandler(error: HttpErrorResponse): any {
     return throwError(error);
   }
 }

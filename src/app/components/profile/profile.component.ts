@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
     apeEmp: '',
     username: '',
     email: ''
-  }
+  };
 
   userId: string;
 
@@ -26,8 +26,8 @@ export class ProfileComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.authService.userId.subscribe(userId => this.userId = userId)
-    this.authService.getUserById(this.activatedRoute.snapshot.params.id)
+    this.authService.userId.subscribe(userId => this.userId = userId);
+    this.authService.getUserById(this.userId)
     .subscribe(
       res => {
         this.empleado = res['datos'];
@@ -45,11 +45,11 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  editUser() {
+  editUser(): void {
     this.router.navigate(['/update', this.userId]);
   }
 
-  editPassword() {
+  editPassword(): void {
     this.router.navigate(['/setpassword', this.userId]);
   }
 

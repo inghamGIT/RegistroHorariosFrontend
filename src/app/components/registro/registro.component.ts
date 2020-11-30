@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from '../../services/registro.service';
-import { ActivatedRoute, Router } from '@angular/router'
+import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -11,18 +12,21 @@ import { ActivatedRoute, Router } from '@angular/router'
 export class RegistroComponent implements OnInit {
 
   registros;
+  userId: string;
 
   constructor(
+    private authService: AuthService,
     private registroService: RegistroService,
     private router: Router,
     private activatedRoute: ActivatedRoute
     ) { }
 
   ngOnInit(): void {
-    this.registroService.getByUserId(this.activatedRoute.snapshot.params.id)
+    this.authService.userId.subscribe(userId => this.userId = userId);
+    this.registroService.getByUserId(this.userId)
     .subscribe(
       res => {
-        this.registros = res['datos'];
+        this.registros = res.datos;
       },
       err => {
         if (err instanceof HttpErrorResponse) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { Empleado } from 'src/app/models/empleado';
 
 @Component({
@@ -22,10 +22,10 @@ export class SignupComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.authService.currentUser.subscribe(user => this.user = user)
+    this.authService.currentUser.subscribe(user => this.user = user);
   }
 
-  signup() {
+  signup(): void {
     this.authService.signup(this.empleado)
       .subscribe(
         res => {
@@ -37,20 +37,20 @@ export class SignupComponent implements OnInit {
         err => {
           this.errorMsg = err.error.mensaje;
         }
-      )
+      );
   }
 
-  getUser() {
+  getUser(): void {
     this.authService.getUser(this.empleado.username)
       .subscribe(
         res => {
-          this.userId = res.datos._id
+          this.userId = res.datos._id;
           this.authService.setIdUser(this.userId);
           this.router.navigate(['/profile', this.userId]);
         },
         err => {
           this.errorMsg = err.error.mensaje;
         }
-      )
+      );
   }
 }

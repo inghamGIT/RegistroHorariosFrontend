@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
     private router: Router
     ) { }
 
-  canActivate() {
+  canActivate(): boolean {
     if (this.authService.isLogged()) {
       return true;
     }
@@ -22,5 +22,4 @@ export class AuthGuard implements CanActivate {
       return false;
     }
   }
-  
 }

@@ -19,24 +19,24 @@ export class RegistroService {
     return this.httpClient.get<any>(this.url + '/registros/5f6f9e5739835905b88dddc5');
   }*/
 
-  geyByDate(userId) {
-    return this,this.httpClient.get<any>(this.url + '/registros/date/' + userId);
+  geyByDate(userId: string): any {
+    return this.httpClient.get<any>(this.url + '/registros/date/' + userId);
   }
 
-  getByUserId(userId) {
+  getByUserId(userId: string): any {
     return this.httpClient.get<any>(this.url + '/registros/user/' + userId);
   }
 
-  getByWeek(userId) {
+  getByWeek(userId: string): any {
     return this.httpClient.get<any>(this.url + '/registros/week/' + userId);
   }
 
 
-  addRegistro(registro) {
+  addRegistro(registro): any {
     return this.httpClient.post<any>(this.url + '/registros', registro);
   }
 
-  updateRegistro(registro, id) {
+  updateRegistro(registro, id: string): any {
     return this.httpClient.put<any>(this.url + '/registros/' + id, registro);
   }
 }

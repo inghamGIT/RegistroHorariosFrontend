@@ -10,14 +10,15 @@ import { AuthService } from '../../services/auth.service';
 export class EditarPassComponent implements OnInit {
 
   empleado = {
+    oldpass: '',
     pass: '',
-    newPass: '',
     confirm: ''
-  }
+  };
   errorMsg = '';
   successMsg = '';
+  noCoinciden = 'Contraseña erronea.';
+  errConfirm = 'Las contraseñas no coinciden.';
   userId: string;
-  regexPWD = '^[a-zA-Z0-9]{3,30}$';
 
   constructor(
     private authService: AuthService,
@@ -29,19 +30,20 @@ export class EditarPassComponent implements OnInit {
     this.authService.userId.subscribe(userId => this.userId = userId);
   }
 
-  edit() {
-    this.authService.updatePass(this.empleado, this.activatedRoute.snapshot.params.id)
+  edit(): void {
+    this.authService.updatePass(this.empleado, this.userId)
       .subscribe(
         res => {
           this.successMsg = res.accion;
         },
         err => {
-          this.errorMsg = err.error;
+          this.errorMsg = err.error.mensaje;
+          console.log(this.errorMsg);
         }
-      )
+      );
   }
 
-  volver() {
-      this.router.navigate(['/profile', this.userId]);  
+  volver(): void {
+      this.router.navigate(['/profile', this.userId]);
   }
 }

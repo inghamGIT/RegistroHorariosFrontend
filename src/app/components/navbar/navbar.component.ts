@@ -18,11 +18,11 @@ export class NavbarComponent implements OnInit {
     this.authService.userId.subscribe(userId => this.userId = userId);
   }
 
-  isLogged() {
+  isLogged(): boolean {
     return this.authService.isLogged();
   }
 
-  getUsername() {
+  getUsername(): string {
     const username = localStorage.getItem('username');
     if (username) {
       return username;
